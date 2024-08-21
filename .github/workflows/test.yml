@@ -1,0 +1,18 @@
+# .github/workflows/print-hello.yml
+name: Print Hello
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  print-message:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Print Hello
+        run: echo "Hello"

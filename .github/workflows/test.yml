@@ -1,10 +1,13 @@
-# .github/workflows/print-hello.yml
-name: Print Hello
+# .github/workflows/print-hello-reusable.yml
+name: Print Hello Reusable
 
 on:
-  push:
-    branches:
-      - main
+  workflow_call:
+    inputs:
+      message:
+        required: true
+        type: string
+        description: 'Message to print'
 
 jobs:
   print-message:
@@ -14,5 +17,5 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v3
 
-      - name: Print Hello
-        run: echo "Hello"
+      - name: Print Message
+        run: echo "${{ inputs.message }}"
